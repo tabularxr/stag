@@ -1,0 +1,142 @@
+# STAG (Spatial Topology Anchor Graph Store) - Go Project
+# https://github.com/tabular/stag
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+stag
+/cmd/stag/stag
+/bin/
+/build/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage.out
+coverage.html
+coverage.xml
+coverage.txt
+coverage.json
+c.out
+profile.out
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Go module proxy cache
+/pkg/mod/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vim/
+.emacs.d/
+.sublime-*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Icon?
+.fseventsd
+.VolumeIcon.icns
+
+# Docker and container files
+docker-data/
+.dockerignore
+docker-compose.override.yml
+*.pid
+.container-*
+
+# Logs and debugging
+*.log
+logs/
+debug.log
+error.log
+access.log
+/tmp/
+.cache/
+
+# Environment and configuration files
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.test
+config.local.yml
+config.override.yml
+secrets.yml
+private.key
+*.pem
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+db.json
+/data/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+*~
+*.tmp
+
+# Compression artifacts
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Performance and profiling
+cpu.prof
+mem.prof
+block.prof
+mutex.prof
+*.prof
+*.pprof
+
+# STAG specific files
+mesh-cache/
+spatial-data/
+*.mesh
+*.anchor
+*.topology
+
+# ArangoDB specific
+arango-data/
+arangodb.conf
+
+# Kubernetes and deployment
+k8s-secrets/
+*.kubeconfig
+helm-values.local.yml
+
+# Monitoring and metrics
+prometheus-data/
+grafana-data/
+
+# Development tools
+.air.toml
+air_tmp/
+.task/
+.golangci.yml

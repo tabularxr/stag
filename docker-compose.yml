@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  arangodb:
+    image: arangodb:3.11
+    container_name: stag-arangodb
+    environment:
+      ARANGO_ROOT_PASSWORD: stagpassword
+    ports:
+      - "8529:8529"
+    volumes:
+      - arango_data:/var/lib/arangodb3
+      - arango_apps:/var/lib/arangodb3-apps
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8529/_api/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  stag:
+    build: .
+    container_name: stag-server
+    environment:
+      ARANGO_URL: http://arangodb:8529
+      ARANGO_DATABASE: stag
+      ARANGO_USERNAME: root
+      ARANGO_PASSWORD: stagpassword
+      STAG_PORT: 8080
+      LOG_LEVEL: info
+    ports:
+      - "8080:8080"
+    depends_on:
+      arangodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  arango_data:
+  arango_apps:
