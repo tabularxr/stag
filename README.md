@@ -41,10 +41,65 @@ STAG is built with a modular architecture:
 ### Prerequisites
 
 - Go 1.22 or higher
-- ArangoDB 3.11+
-- Docker and Docker Compose (for containerized deployment)
+- Docker Desktop (includes Docker Engine and Docker Compose)
+- ArangoDB 3.11+ (can be run via Docker - see setup instructions below)
 
-### Local Development
+### Installation
+
+#### Install Docker Desktop
+
+**macOS:**
+```bash
+brew install --cask docker
+```
+
+**Windows/Linux:** Download from [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+After installation, launch Docker Desktop and complete the setup process. 
+
+⚠️ **Important:** Docker Desktop must be running before you can use Docker commands:
+1. Open Docker Desktop from Applications folder
+2. Wait for Docker icon to appear in menu bar
+3. Verify with: `docker info`
+
+#### Install Go
+
+**macOS:**
+```bash
+brew install go
+```
+
+**Windows/Linux:** Download from [Go Downloads](https://golang.org/dl/)
+
+### Quick Setup (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd stag
+   ```
+
+2. **Run the setup script**
+   ```bash
+   ./setup.sh
+   ```
+
+3. **Source environment variables and run**
+   ```bash
+   source .env
+   make run
+   ```
+
+That's it! The setup script will:
+- ✅ Check prerequisites (Docker, Go)
+- 📦 Install dependencies
+- 🗄️ Start ArangoDB
+- 🔧 Create .env file with defaults
+- 📋 Show you next steps
+
+### Manual Setup (Alternative)
+
+If you prefer manual setup:
 
 1. **Clone the repository**
    ```bash
@@ -318,20 +373,35 @@ STAG includes Prometheus metrics at `/metrics` endpoint:
 
 ### Common Issues
 
-1. **Database Connection Failed**
-   - Verify ArangoDB is running
-   - Check connection credentials
-   - Ensure database exists
+1. **"Cannot connect to Docker daemon" Error**
+   - Docker Desktop is not running
+   - Solution: Launch Docker Desktop from Applications folder
+   - Wait for Docker icon in menu bar before running commands
 
-2. **WebSocket Connection Issues**
+2. **"docker-compose: command not found" Error**
+   - Using old Docker installation
+   - Solution: Install Docker Desktop (includes newer docker compose)
+   - Or run: `brew install --cask docker`
+
+3. **Database Connection Failed**
+   - Verify ArangoDB is running: `docker compose ps`
+   - Check connection credentials in .env file
+   - Restart ArangoDB: `make docker-down && make docker-up-db`
+
+4. **WebSocket Connection Issues**
    - Check firewall settings
    - Verify session ID parameter
    - Monitor connection logs
 
-3. **High Memory Usage**
+5. **High Memory Usage**
    - Adjust compression levels
    - Monitor mesh data sizes
    - Consider data retention policies
+
+6. **Setup Script Fails**
+   - Check prerequisites are installed
+   - Ensure Docker Desktop is running
+   - Run with verbose output: `bash -x setup.sh`
 
 ### Logging
 

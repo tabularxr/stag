@@ -21,7 +21,7 @@ test-with-db: docker-up-db
 	sleep 10
 	go test ./tests/unit/... -v
 	go test ./tests/integration/... -v
-	docker-compose down arangodb
+	docker compose down arangodb
 
 # Docker
 docker-build:
@@ -29,16 +29,16 @@ docker-build:
 	docker tag $(APP_NAME):$(VERSION) $(APP_NAME):latest
 
 docker-up:
-	docker-compose up -d
+	docker compose up -d
 
 docker-up-db:
-	docker-compose up -d arangodb
+	docker compose up -d arangodb
 
 docker-down:
-	docker-compose down
+	docker compose down
 
 docker-logs:
-	docker-compose logs -f
+	docker compose logs -f
 
 # Development
 fmt:
