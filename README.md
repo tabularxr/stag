@@ -2,6 +2,22 @@
 
 STAG is a high-performance spatial data ingestion and query service built in Go. It provides real-time spatial tracking capabilities with support for anchors, meshes, and WebSocket connectivity for live updates.
 
+## 🚀 TL;DR - Get Running in 30 seconds
+
+```bash
+git clone <repo> && cd stag
+./setup.sh
+source .env
+make run
+```
+
+Or minimal setup:
+```bash
+make docker-up-db
+export ARANGO_PASSWORD=stagpassword
+make run
+```
+
 ## Features
 
 - **Spatial Data Ingestion**: Ingest spatial events with anchors and mesh data
@@ -90,6 +106,12 @@ brew install go
    make run
    ```
 
+   **Note**: If you skipped the setup script, you must set the database password:
+   ```bash
+   export ARANGO_PASSWORD=stagpassword
+   make run
+   ```
+
 That's it! The setup script will:
 - ✅ Check prerequisites (Docker, Go)
 - 📦 Install dependencies
@@ -117,12 +139,15 @@ If you prefer manual setup:
    make docker-up-db
    ```
 
-4. **Set environment variables**
+4. **Set environment variables (REQUIRED)**
    ```bash
+   # Required - matches docker-compose.yml password
+   export ARANGO_PASSWORD=stagpassword
+   
+   # Optional - these have defaults
    export ARANGO_URL=http://localhost:8529
    export ARANGO_DATABASE=stag
    export ARANGO_USERNAME=root
-   export ARANGO_PASSWORD=stagpassword
    export STAG_PORT=8080
    export LOG_LEVEL=info
    ```
