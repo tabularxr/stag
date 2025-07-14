@@ -1,4 +1,4 @@
-# STAG - Spatial Tracking and Georeferencing Service
+# STAG - Spatial Topology & Anchor Graph
 
 STAG is a high-performance spatial data ingestion and query service built in Go. It provides real-time spatial tracking capabilities with support for anchors, meshes, and WebSocket connectivity for live updates.
 
