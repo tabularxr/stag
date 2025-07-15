@@ -7,8 +7,8 @@
 *.dll
 *.so
 *.dylib
-stag
-/cmd/stag/stag
+/stag
+cmd/stag/stag
 /bin/
 /build/
 
@@ -71,6 +71,7 @@ logs/
 debug.log
 error.log
 access.log
+stag.log
 /tmp/
 .cache/
 

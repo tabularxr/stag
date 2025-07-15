@@ -13,7 +13,7 @@ func setupTestDB(t *testing.T) *database.DB {
 		URL:      "http://localhost:8529",
 		Database: "stag_test",
 		Username: "root",
-		Password: "test",
+		Password: "stagpassword",
 	}
 
 	ctx := context.Background()

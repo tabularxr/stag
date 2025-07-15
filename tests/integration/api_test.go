@@ -168,7 +168,7 @@ func setupTestServer(t *testing.T) (http.Handler, func()) {
 			URL:      "http://localhost:8529",
 			Database: "stag_integration_test",
 			Username: "root",
-			Password: "test",
+			Password: "stagpassword",
 		},
 		LogLevel: "error",
 	}
