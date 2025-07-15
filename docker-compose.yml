@@ -10,7 +10,7 @@ services:
       - arango_data:/var/lib/arangodb3
       - arango_apps:/var/lib/arangodb3-apps
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8529/_api/version"]
+      test: ["CMD", "sh", "-c", "wget --quiet --tries=1 --spider --header='Authorization: Basic cm9vdDpzdGFncGFzc3dvcmQ=' http://0.0.0.0:8529/_api/version || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5

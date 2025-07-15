@@ -1,17 +1,18 @@
 # STAG - Spatial Topology & Anchor Graph
 
-STAG is a high-performance spatial data ingestion and query service built in Go. It provides real-time spatial tracking capabilities with support for anchors, meshes, and WebSocket connectivity for live updates.
+STAG is a spatial data ingestion and query service built in Go. It supports real-time spatial tracking with anchors, meshes, and WebSocket connectivity for live updates.
 
-## 🚀 TL;DR - Get Running in 30 seconds
+## Quick Start
 
 ```bash
-git clone <repo> && cd stag
+git clone <repository-url>
+cd stag
 ./setup.sh
 source .env
 make run
 ```
 
-Or minimal setup:
+Alternative minimal setup:
 ```bash
 make docker-up-db
 export ARANGO_PASSWORD=stagpassword
@@ -73,7 +74,7 @@ brew install --cask docker
 
 After installation, launch Docker Desktop and complete the setup process. 
 
-⚠️ **Important:** Docker Desktop must be running before you can use Docker commands:
+**Important:** Docker Desktop must be running before you can use Docker commands:
 1. Open Docker Desktop from Applications folder
 2. Wait for Docker icon to appear in menu bar
 3. Verify with: `docker info`
@@ -112,12 +113,12 @@ brew install go
    make run
    ```
 
-That's it! The setup script will:
-- ✅ Check prerequisites (Docker, Go)
-- 📦 Install dependencies
-- 🗄️ Start ArangoDB
-- 🔧 Create .env file with defaults
-- 📋 Show you next steps
+The setup script will:
+- Check prerequisites (Docker, Go)
+- Install dependencies
+- Start ArangoDB
+- Create .env file with defaults
+- Show you next steps
 
 ### Manual Setup (Alternative)
 
@@ -166,7 +167,7 @@ The server will start on port 8080 by default.
    make docker-up
    ```
 
-This will start both ArangoDB and STAG in containers with proper networking.
+This starts both ArangoDB and STAG in containers.
 
 ## API Endpoints
 
@@ -450,4 +451,4 @@ This project is licensed under the terms specified in the LICENSE file.
 
 ## Support
 
-For issues and questions, please refer to the project's issue tracker or documentation.
+For issues and questions, check the project's issue tracker.
